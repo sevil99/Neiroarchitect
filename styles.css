@@ -98,8 +98,7 @@ img {
   transform: translateY(1px) scale(0.96);
 }
 
-.icon,
-.search-panel__icon {
+.icon {
   display: block;
   background: currentColor;
   mask-position: center;
@@ -169,11 +168,24 @@ img {
 }
 
 .search-panel__icon {
+  display: grid;
   flex: 0 0 auto;
   width: 34px;
   height: 34px;
+  place-items: center;
   color: var(--blue);
+}
+
+.search-panel__icon::before {
+  display: block;
+  width: 34px;
+  height: 34px;
+  background: currentColor;
+  content: "";
   mask-image: url("assets/icons/IconSearch.svg");
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
 }
 
 .search-panel input,
@@ -259,20 +271,27 @@ img {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  min-height: calc(100vh - 190px);
+}
+
+#chat.screen--active {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .message {
   width: max-content;
   max-width: min(820px, 100%);
   margin: 0;
-  padding: 12px 18px;
+  padding: 20px 40px;
   border: 1px solid var(--line);
   border-radius: 999px;
   background: #ffffff;
   color: var(--ink);
-  font-size: 18px;
-  line-height: 1.25;
+  font-family: "Inria Sans", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.2;
 }
 
 .message--user {
@@ -330,8 +349,13 @@ img {
 }
 
 .chat-input {
-  margin-top: auto;
   padding: 0 28px;
+}
+
+.chat-input input {
+  font-family: "Inria Sans", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
 }
 
 .cart-title {
@@ -533,17 +557,28 @@ input:focus-visible {
 
   .search-panel {
     width: 100%;
-    height: 54px;
-    min-height: 54px;
+    height: 110px;
+    min-height: 110px;
     padding-inline: 26px;
   }
 
   .search-panel__icon {
-    width: 25px;
-    height: 25px;
+    width: 90px;
+    height: 90px;
+    padding: 20px;
   }
 
-  .search-panel input,
+  .search-panel__icon::before {
+    width: 50px;
+    height: 50px;
+  }
+
+  .search-panel input {
+    font-family: "Inria Sans", Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+  }
+
   .chat-input input {
     font-size: 14px;
   }
@@ -562,18 +597,21 @@ input:focus-visible {
   }
 
   .room-card span {
-    min-height: 31px;
-    padding: 8px 10px;
-    font-size: 12px;
+    min-height: auto;
+    padding: 20px;
+    font-family: "Inria Sans", Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    font-weight: 700;
   }
 
   .message {
+    padding: 20px 40px;
     font-size: 16px;
+    font-weight: 700;
   }
 
   .chat-flow {
-    min-height: calc(100vh - 170px);
-    gap: 14px;
+    gap: 16px;
   }
 
   .proposal-strip img {
@@ -642,6 +680,22 @@ input:focus-visible {
     padding-inline: 20px;
   }
 
+  .search-panel__icon {
+    width: 25px;
+    height: 25px;
+    padding: 0;
+  }
+
+  .search-panel__icon::before {
+    width: 25px;
+    height: 25px;
+  }
+
+  .search-panel input {
+    font-size: 14px;
+    font-weight: 400;
+  }
+
   .rooms-grid,
   .products-grid {
     width: 100%;
@@ -654,8 +708,15 @@ input:focus-visible {
     min-height: 260px;
   }
 
+  .room-card span {
+    min-height: 31px;
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
   .message {
     max-width: 100%;
+    padding: 12px 18px;
     font-size: 14px;
   }
 

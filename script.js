@@ -6,6 +6,8 @@ const totalElement = document.getElementById("total");
 const itemsCountElement = document.getElementById("itemsCount");
 const checkoutButton = document.getElementById("checkoutButton");
 const successMessage = document.getElementById("successMessage");
+const chatInputForm = document.querySelector(".chat-input");
+const chatPromptInput = document.getElementById("chatPrompt");
 
 const roomMessages = {
   "Ванная": "Я хочу сделать ремонт в ванной",
@@ -117,6 +119,16 @@ productCards.forEach((card) => {
 
 checkoutButton.addEventListener("click", () => {
   successMessage.classList.add("success-message--visible");
+});
+
+chatInputForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  if (!chatPromptInput.value.trim()) {
+    return;
+  }
+
+  showScreen("cart");
 });
 
 updateCartSummary();
