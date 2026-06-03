@@ -315,7 +315,7 @@ img {
 }
 
 .proposal-strip--cart {
-  margin: 12px 0 28px;
+  margin: 0 0 26px;
 }
 
 .primary-button {
@@ -359,7 +359,7 @@ img {
 }
 
 .cart-title {
-  margin-bottom: 18px;
+  margin-bottom: 26px;
 }
 
 .cart-layout {
@@ -371,7 +371,7 @@ img {
 .products-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 24px 36px;
+  gap: 26px;
 }
 
 .product-card {
@@ -407,8 +407,9 @@ img {
   margin: 0 0 3px;
   overflow: hidden;
   color: #111111;
-  font-size: 14px;
-  font-weight: 800;
+  font-family: "Inria Sans", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
   line-height: 1.15;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -418,7 +419,9 @@ img {
   margin: 0 0 3px;
   overflow: hidden;
   color: #3d4650;
-  font-size: 10px;
+  font-family: "Inria Sans", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 300;
   line-height: 1.2;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -427,7 +430,9 @@ img {
 .product-card strong {
   display: block;
   color: #111111;
-  font-size: 14px;
+  font-family: "Inria Sans", Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
   line-height: 1.2;
 }
 
@@ -620,7 +625,7 @@ input:focus-visible {
 
   .products-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px 20px;
+    gap: 26px;
   }
 
   .product-card {
