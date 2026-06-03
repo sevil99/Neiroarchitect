@@ -1,0 +1,338 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  color: #111;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app {
+  min-height: 100vh;
+  background: #fff;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 64px;
+  padding: 0 32px;
+  border-bottom: 1px solid #eee;
+  background: #fff;
+}
+
+.header__logo {
+  color: #111;
+  font-size: 22px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.icon-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+}
+
+.icon-button img {
+  width: 24px;
+  height: 24px;
+}
+
+.icon-button:hover {
+  background: #f0f0f0;
+}
+
+.main {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+.screen {
+  display: none;
+}
+
+.screen--active {
+  display: block;
+}
+
+h1 {
+  margin: 0 0 24px;
+  font-size: 32px;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 520px;
+  height: 48px;
+  margin-bottom: 24px;
+  padding: 0 16px;
+  border-radius: 16px;
+  background: #f3f3f3;
+}
+
+.search img {
+  width: 20px;
+  height: 20px;
+}
+
+.search input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+}
+
+.rooms-grid,
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.room-card {
+  position: relative;
+  min-height: 220px;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  border-radius: 24px;
+  background: #ddd;
+  text-align: left;
+}
+
+.room-card img,
+.product-card img,
+.variants img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.room-card span {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #111;
+  font-weight: 600;
+}
+
+.room-card:hover {
+  transform: translateY(-2px);
+}
+
+.chat {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 760px;
+}
+
+.message {
+  max-width: 70%;
+  padding: 16px 18px;
+  border-radius: 20px;
+  background: #f1f1f1;
+}
+
+.message--user {
+  align-self: flex-end;
+  background: #005c99;
+  color: #fff;
+}
+
+.message--bot {
+  align-self: flex-start;
+}
+
+.variants {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.variants img {
+  height: 220px;
+  border-radius: 20px;
+}
+
+.primary-button {
+  min-height: 48px;
+  padding: 0 24px;
+  border: 0;
+  border-radius: 14px;
+  background: #005c99;
+  color: #fff;
+  font-weight: 600;
+}
+
+.primary-button:hover {
+  background: #004a7a;
+}
+
+.primary-button:active {
+  transform: scale(0.98);
+}
+
+.product-card {
+  padding: 16px;
+  border-radius: 24px;
+  background: #f7f7f7;
+}
+
+.product-card img {
+  height: 180px;
+  border-radius: 18px;
+  background: #ddd;
+}
+
+.product-card h2 {
+  margin: 14px 0 6px;
+  font-size: 20px;
+}
+
+.product-card p {
+  margin: 0 0 14px;
+  font-weight: 700;
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.counter button {
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 10px;
+  background: #e6e6e6;
+}
+
+.order-footer {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 24px;
+  padding: 16px;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.success-message {
+  display: none;
+  margin-top: 16px;
+  padding: 16px;
+  border-radius: 16px;
+  background: #e8f7e8;
+  font-weight: 700;
+}
+
+.success-message--visible {
+  display: block;
+}
+
+@media (max-width: 1023px) {
+  .header {
+    padding: 0 24px;
+  }
+
+  .main {
+    max-width: 760px;
+    padding: 24px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  .rooms-grid,
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .room-card {
+    min-height: 200px;
+  }
+}
+
+@media (max-width: 767px) {
+  .header {
+    min-height: 56px;
+    padding: 0 16px;
+  }
+
+  .header__logo {
+    font-size: 18px;
+  }
+
+  .header__actions {
+    gap: 8px;
+  }
+
+  .icon-button {
+    width: 36px;
+    height: 36px;
+  }
+
+  .main {
+    padding: 16px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .rooms-grid,
+  .products-grid,
+  .variants {
+    grid-template-columns: 1fr;
+  }
+
+  .room-card {
+    min-height: 190px;
+  }
+
+  .message {
+    max-width: 100%;
+  }
+
+  .order-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

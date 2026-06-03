@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neiroarchitect</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <a href="#" class="header__logo" data-screen="home">Neiroarchitect</a>
+
+      <div class="header__actions">
+        <button class="icon-button" type="button" aria-label="Профиль">
+          <img src="assets/icons/user.svg" alt="">
+        </button>
+
+        <button class="icon-button" type="button" aria-label="Корзина" data-screen="cart">
+          <img src="assets/icons/cart.svg" alt="">
+        </button>
+
+        <button class="icon-button" type="button" aria-label="Меню">
+          <img src="assets/icons/menu.svg" alt="">
+        </button>
+      </div>
+    </header>
+
+    <main class="main">
+      <section id="home" class="screen screen--active">
+        <h1>Выберите комнату</h1>
+
+        <div class="search">
+          <img src="assets/icons/search.svg" alt="">
+          <input type="text" placeholder="Поиск">
+        </div>
+
+        <div class="rooms-grid">
+          <button class="room-card" type="button" data-screen="chat">
+            <img src="assets/images/bathroom.jpg" alt="Ванная">
+            <span>Ванная за 100 тыс.</span>
+          </button>
+
+          <button class="room-card" type="button" data-screen="chat">
+            <img src="assets/images/kitchen.jpg" alt="Кухня">
+            <span>Кухня за 150 тыс.</span>
+          </button>
+
+          <button class="room-card" type="button" data-screen="chat">
+            <img src="assets/images/living-room.jpg" alt="Гостиная">
+            <span>Гостиная за 200 тыс.</span>
+          </button>
+        </div>
+      </section>
+
+      <section id="chat" class="screen">
+        <h1>Подбор дизайна</h1>
+
+        <div class="chat">
+          <div class="message message--user">
+            Хочу сделать ремонт ванной до 100 тысяч
+          </div>
+
+          <div class="message message--bot">
+            Я подобрал вариант ремонта и товары под ваш бюджет.
+          </div>
+
+          <div class="variants">
+            <img src="assets/images/room-variant-1.jpg" alt="Вариант ремонта">
+            <img src="assets/images/room-variant-2.jpg" alt="Вариант ремонта">
+          </div>
+
+          <button class="primary-button" type="button" data-screen="cart">
+            Давай
+          </button>
+        </div>
+      </section>
+
+      <section id="cart" class="screen">
+        <h1>Корзина</h1>
+
+        <div class="products-grid">
+          <article class="product-card" data-price="25000">
+            <img src="assets/images/sofa.jpg" alt="Диван">
+            <h2>Диван</h2>
+            <p>25 000 ₽</p>
+
+            <div class="counter">
+              <button type="button" class="counter__minus">−</button>
+              <span class="counter__value">1</span>
+              <button type="button" class="counter__plus">+</button>
+            </div>
+          </article>
+
+          <article class="product-card" data-price="8000">
+            <img src="assets/images/lamp.jpg" alt="Лампа">
+            <h2>Лампа</h2>
+            <p>8 000 ₽</p>
+
+            <div class="counter">
+              <button type="button" class="counter__minus">−</button>
+              <span class="counter__value">1</span>
+              <button type="button" class="counter__plus">+</button>
+            </div>
+          </article>
+        </div>
+
+        <div class="order-footer">
+          <strong>Итого: <span id="total">33 000 ₽</span></strong>
+          <button class="primary-button" type="button" id="checkoutButton">
+            Оформить заказ
+          </button>
+        </div>
+
+        <p class="success-message" id="successMessage">
+          Заказ оформлен!
+        </p>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
