@@ -283,7 +283,7 @@ img {
   width: max-content;
   max-width: min(820px, 100%);
   margin: 0;
-  padding: 20px 40px;
+  padding: 16px 25px;
   border: 1px solid var(--line);
   border-radius: 999px;
   background: #ffffff;
@@ -310,7 +310,7 @@ img {
 
 .proposal-strip img {
   width: 100%;
-  aspect-ratio: 2.55 / 1;
+  height: 300px;
   object-fit: cover;
 }
 
@@ -349,7 +349,7 @@ img {
 }
 
 .chat-input {
-  padding: 0 28px;
+  padding: 16px 25px;
 }
 
 .chat-input input {
@@ -605,7 +605,7 @@ input:focus-visible {
   }
 
   .message {
-    padding: 20px 40px;
+    padding: 16px 25px;
     font-size: 16px;
     font-weight: 700;
   }
@@ -615,7 +615,7 @@ input:focus-visible {
   }
 
   .proposal-strip img {
-    aspect-ratio: 2.1 / 1;
+    height: 160px;
   }
 
   .products-grid {
@@ -726,6 +726,7 @@ input:focus-visible {
   }
 
   .proposal-strip img {
+    height: auto;
     aspect-ratio: 2.4 / 1;
   }
 
