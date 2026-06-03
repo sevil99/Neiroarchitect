@@ -1,6 +1,8 @@
 :root {
   --blue: #04467c;
   --blue-dark: #023e69;
+  --blue-hover: #315a7b;
+  --blue-active: #022440;
   --ink: #0d2236;
   --muted: #8c98a4;
   --line: #d9e2e9;
@@ -86,15 +88,18 @@ img {
   padding: 10px;
   border: 0;
   border-radius: 8px;
+  color: #ffffff;
   background: transparent;
   transition: background-color 160ms ease, transform 160ms ease;
 }
 
 .icon-button:hover {
   background: rgba(255, 255, 255, 0.12);
+  color: var(--blue-hover);
 }
 
 .icon-button:active {
+  color: var(--blue-active);
   transform: translateY(1px) scale(0.96);
 }
 
@@ -109,7 +114,7 @@ img {
 .icon {
   width: 60px;
   height: 60px;
-  color: #ffffff;
+  color: inherit;
 }
 
 .icon--person {
@@ -204,6 +209,29 @@ img {
   border-radius: 999px;
   background: #ffffff;
   box-shadow: var(--shadow);
+  transition: border-color 160ms ease, box-shadow 160ms ease, color 160ms ease;
+}
+
+.search-panel:hover,
+.search-panel:focus-within,
+.chat-input:hover,
+.chat-input:focus-within {
+  border-color: var(--blue-hover);
+  color: var(--blue-hover);
+}
+
+.search-panel:hover input,
+.search-panel:focus-within input,
+.chat-input:hover input,
+.chat-input:focus-within input {
+  color: var(--blue-hover);
+}
+
+.search-panel:hover input::placeholder,
+.search-panel:focus-within input::placeholder,
+.chat-input:hover input::placeholder,
+.chat-input:focus-within input::placeholder {
+  color: var(--blue-hover);
 }
 
 .search-panel {
@@ -301,12 +329,18 @@ img {
   text-align: center;
   text-overflow: ellipsis;
   transform: translateX(-50%);
+  transition: background-color 160ms ease, color 160ms ease;
   white-space: nowrap;
 }
 
 .room-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 12px 26px rgba(21, 61, 89, 0.18);
+}
+
+.room-card:hover span {
+  color: var(--blue);
+  background: #ffffff;
 }
 
 .room-card:active {
@@ -406,6 +440,14 @@ img {
   transform: translateY(1px) scale(0.98);
 }
 
+.order-summary .primary-button:hover {
+  background: var(--blue-hover);
+}
+
+.order-summary .primary-button:active {
+  background: var(--blue-active);
+}
+
 .primary-button--compact {
   min-height: 44px;
   padding-inline: 22px;
@@ -456,8 +498,8 @@ img {
 
 .product-card img {
   grid-area: image;
-  width: 100%;
-  aspect-ratio: 1.25 / 1;
+  width: 170px;
+  height: 170px;
   border-radius: 10px;
   object-fit: cover;
 }
