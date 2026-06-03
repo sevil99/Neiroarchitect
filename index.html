@@ -8,113 +8,220 @@
 </head>
 <body>
   <div class="app">
-    <header class="header">
-      <a href="#" class="header__logo" data-screen="home">Neiroarchitect</a>
+    <header class="site-header">
+      <button class="brand" type="button" data-screen="home">Neiroarchitect</button>
 
-      <div class="header__actions">
+      <nav class="header-actions" aria-label="Основная навигация">
         <button class="icon-button" type="button" aria-label="Профиль">
-          <img src="assets/icons/user.svg" alt="">
+          <span class="icon icon--person" aria-hidden="true"></span>
         </button>
-
         <button class="icon-button" type="button" aria-label="Корзина" data-screen="cart">
-          <img src="assets/icons/cart.svg" alt="">
+          <span class="icon icon--cart" aria-hidden="true"></span>
         </button>
-
         <button class="icon-button" type="button" aria-label="Меню">
-          <img src="assets/icons/menu.svg" alt="">
+          <span class="icon icon--burger" aria-hidden="true"></span>
         </button>
-      </div>
+      </nav>
     </header>
 
     <main class="main">
-      <section id="home" class="screen screen--active">
-        <h1>Выберите комнату</h1>
+      <section class="screen screen--active" id="home" aria-labelledby="home-title">
+        <h1 class="visually-hidden" id="home-title">Выбор комнаты</h1>
 
-        <div class="search">
-          <img src="assets/icons/search.svg" alt="">
-          <input type="text" placeholder="Поиск">
-        </div>
+        <form class="search-panel" role="search">
+          <span class="search-panel__icon" aria-hidden="true"></span>
+          <label class="visually-hidden" for="repairSearch">Что сегодня ремонтируем?</label>
+          <input id="repairSearch" type="search" placeholder="Что сегодня ремонтируем?">
+        </form>
 
         <div class="rooms-grid">
-          <button class="room-card" type="button" data-screen="chat">
-            <img src="assets/images/bathroom.jpg" alt="Ванная">
+          <button class="room-card" type="button" data-screen="chat" data-room="Ванная">
+            <img src="assets/images/BadroomBanner.jpg" alt="Интерьер ванной комнаты">
             <span>Ванная за 100 тыс.</span>
           </button>
 
-          <button class="room-card" type="button" data-screen="chat">
-            <img src="assets/images/kitchen.jpg" alt="Кухня">
-            <span>Кухня за 150 тыс.</span>
+          <button class="room-card" type="button" data-screen="chat" data-room="Кухня">
+            <img src="assets/images/KitchenBanner.jpg" alt="Интерьер кухни">
+            <span>Кухня за 120 тыс.</span>
           </button>
 
-          <button class="room-card" type="button" data-screen="chat">
-            <img src="assets/images/living-room.jpg" alt="Гостиная">
-            <span>Гостиная за 200 тыс.</span>
-          </button>
-        </div>
-      </section>
-
-      <section id="chat" class="screen">
-        <h1>Подбор дизайна</h1>
-
-        <div class="chat">
-          <div class="message message--user">
-            Хочу сделать ремонт ванной до 100 тысяч
-          </div>
-
-          <div class="message message--bot">
-            Я подобрал вариант ремонта и товары под ваш бюджет.
-          </div>
-
-          <div class="variants">
-            <img src="assets/images/room-variant-1.jpg" alt="Вариант ремонта">
-            <img src="assets/images/room-variant-2.jpg" alt="Вариант ремонта">
-          </div>
-
-          <button class="primary-button" type="button" data-screen="cart">
-            Давай
+          <button class="room-card" type="button" data-screen="chat" data-room="Гостиная">
+            <img src="assets/images/LivingRoomBanner.jpg" alt="Интерьер гостиной">
+            <span>Гостиная за 80 тыс.</span>
           </button>
         </div>
       </section>
 
-      <section id="cart" class="screen">
-        <h1>Корзина</h1>
+      <section class="screen" id="chat" aria-labelledby="chat-title">
+        <h1 class="visually-hidden" id="chat-title">Подбор ремонта</h1>
 
-        <div class="products-grid">
-          <article class="product-card" data-price="25000">
-            <img src="assets/images/sofa.jpg" alt="Диван">
-            <h2>Диван</h2>
-            <p>25 000 ₽</p>
+        <div class="chat-flow" aria-live="polite">
+          <p class="message message--user" id="roomRequest">Я хочу сделать ремонт в ванной</p>
+          <p class="message message--bot">Это отличная идея! Как вам такой вариант?</p>
 
-            <div class="counter">
-              <button type="button" class="counter__minus">−</button>
-              <span class="counter__value">1</span>
-              <button type="button" class="counter__plus">+</button>
-            </div>
-          </article>
+          <div class="proposal-strip" aria-label="Варианты дизайна ванной">
+            <img src="assets/images/BadroomBlue.jpg" alt="Ванная с голубыми шкафами">
+            <img src="assets/images/BadroomWhite.jpg" alt="Светлая ванная с круглым зеркалом">
+            <img src="assets/images/BadroomWood.jpg" alt="Ванная с деревянной отделкой">
+          </div>
 
-          <article class="product-card" data-price="8000">
-            <img src="assets/images/lamp.jpg" alt="Лампа">
-            <h2>Лампа</h2>
-            <p>8 000 ₽</p>
-
-            <div class="counter">
-              <button type="button" class="counter__minus">−</button>
-              <span class="counter__value">1</span>
-              <button type="button" class="counter__plus">+</button>
-            </div>
-          </article>
+          <p class="message message--bot">Сгенерируем корзину для вашего ремонта?</p>
+          <button class="primary-button primary-button--compact" type="button" data-screen="cart">Давай</button>
         </div>
 
-        <div class="order-footer">
-          <strong>Итого: <span id="total">33 000 ₽</span></strong>
-          <button class="primary-button" type="button" id="checkoutButton">
-            Оформить заказ
-          </button>
+        <form class="chat-input">
+          <label class="visually-hidden" for="chatPrompt">Уточните детали</label>
+          <input id="chatPrompt" type="text" placeholder="Уточните детали">
+        </form>
+      </section>
+
+      <section class="screen" id="cart" aria-labelledby="cart-title">
+        <h1 class="visually-hidden" id="cart-title">Корзина</h1>
+
+        <p class="message message--bot cart-title">Вот что мы подобрали для вас!</p>
+
+        <div class="proposal-strip proposal-strip--cart" aria-label="Подобранный дизайн ванной">
+          <img src="assets/images/BadroomBlue.jpg" alt="Ванная с голубыми шкафами">
+          <img src="assets/images/BadroomWhite.jpg" alt="Светлая ванная с круглым зеркалом">
+          <img src="assets/images/BadroomWood.jpg" alt="Ванная с деревянной отделкой">
         </div>
 
-        <p class="success-message" id="successMessage">
-          Заказ оформлен!
-        </p>
+        <div class="cart-layout">
+          <div class="products-grid" aria-label="Список товаров">
+            <article class="product-card" data-price="872">
+              <img src="assets/images/BadroomWhite.jpg" alt="Змеевик Фёдор">
+              <div class="product-card__content">
+                <h2>Змеевик Фёдор</h2>
+                <p>Артул 3М53</p>
+                <strong>872 р</strong>
+              </div>
+              <div class="counter" aria-label="Количество товара">
+                <button class="counter__minus" type="button" aria-label="Уменьшить количество">-</button>
+                <span class="counter__value">1</span>
+                <button class="counter__plus" type="button" aria-label="Увеличить количество">+</button>
+              </div>
+            </article>
+
+            <article class="product-card" data-price="872">
+              <img src="assets/images/BadroomBlue.jpg" alt="Лампа Фёдор">
+              <div class="product-card__content">
+                <h2>Лампа Фёдор</h2>
+                <p>Артул 4Л3МС</p>
+                <strong>872 р</strong>
+              </div>
+              <div class="counter" aria-label="Количество товара">
+                <button class="counter__minus" type="button" aria-label="Уменьшить количество">-</button>
+                <span class="counter__value">1</span>
+                <button class="counter__plus" type="button" aria-label="Увеличить количество">+</button>
+              </div>
+            </article>
+
+            <article class="product-card" data-price="872">
+              <img src="assets/images/BadroomWood.jpg" alt="Плитка Фёдор">
+              <div class="product-card__content">
+                <h2>Плитка Фёдор</h2>
+                <p>Артул 5ММС9</p>
+                <strong>872 р</strong>
+              </div>
+              <div class="counter" aria-label="Количество товара">
+                <button class="counter__minus" type="button" aria-label="Уменьшить количество">-</button>
+                <span class="counter__value">1</span>
+                <button class="counter__plus" type="button" aria-label="Увеличить количество">+</button>
+              </div>
+            </article>
+
+            <article class="product-card" data-price="872">
+              <img src="assets/images/KitchenBanner.jpg" alt="Тумбочка Фёдор">
+              <div class="product-card__content">
+                <h2>Тумбочка Фёдор</h2>
+                <p>Артул 6ДР39</p>
+                <strong>872 р</strong>
+              </div>
+              <div class="counter" aria-label="Количество товара">
+                <button class="counter__minus" type="button" aria-label="Уменьшить количество">-</button>
+                <span class="counter__value">1</span>
+                <button class="counter__plus" type="button" aria-label="Увеличить количество">+</button>
+              </div>
+            </article>
+
+            <article class="product-card" data-price="872">
+              <img src="assets/images/BadroomWhite.jpg" alt="Раковина Фёдор">
+              <div class="product-card__content">
+                <h2>Раковина Фёдор</h2>
+                <p>Артул 6КС42</p>
+                <strong>872 р</strong>
+              </div>
+              <div class="counter" aria-label="Количество товара">
+                <button class="counter__minus" type="button" aria-label="Уменьшить количество">-</button>
+                <span class="counter__value">1</span>
+                <button class="counter__plus" type="button" aria-label="Увеличить количество">+</button>
+              </div>
+            </article>
+
+            <article class="product-card" data-price="872">
+              <img src="assets/images/LivingRoomBanner.jpg" alt="Унитаз Фёдор">
+              <div class="product-card__content">
+                <h2>Унитаз Фёдор</h2>
+                <p>Артул 3НС6У</p>
+                <strong>872 р</strong>
+              </div>
+              <div class="counter" aria-label="Количество товара">
+                <button class="counter__minus" type="button" aria-label="Уменьшить количество">-</button>
+                <span class="counter__value">1</span>
+                <button class="counter__plus" type="button" aria-label="Увеличить количество">+</button>
+              </div>
+            </article>
+
+            <article class="product-card" data-price="872">
+              <img src="assets/images/BadroomWood.jpg" alt="Ванна Фёдор">
+              <div class="product-card__content">
+                <h2>Ванна Фёдор</h2>
+                <p>Артул М3УС9</p>
+                <strong>872 р</strong>
+              </div>
+              <div class="counter" aria-label="Количество товара">
+                <button class="counter__minus" type="button" aria-label="Уменьшить количество">-</button>
+                <span class="counter__value">1</span>
+                <button class="counter__plus" type="button" aria-label="Увеличить количество">+</button>
+              </div>
+            </article>
+
+            <article class="product-card" data-price="872">
+              <img src="assets/images/BadroomBlue.jpg" alt="Полка Фёдор">
+              <div class="product-card__content">
+                <h2>Полка Фёдор</h2>
+                <p>Артул 9ТУ3С</p>
+                <strong>872 р</strong>
+              </div>
+              <div class="counter" aria-label="Количество товара">
+                <button class="counter__minus" type="button" aria-label="Уменьшить количество">-</button>
+                <span class="counter__value">1</span>
+                <button class="counter__plus" type="button" aria-label="Увеличить количество">+</button>
+              </div>
+            </article>
+
+            <article class="product-card" data-price="872">
+              <img src="assets/images/BadroomWhite.jpg" alt="Лейка Фёдор">
+              <div class="product-card__content">
+                <h2>Лейка Фёдор</h2>
+                <p>Артул У39Д3</p>
+                <strong>872 р</strong>
+              </div>
+              <div class="counter" aria-label="Количество товара">
+                <button class="counter__minus" type="button" aria-label="Уменьшить количество">-</button>
+                <span class="counter__value">1</span>
+                <button class="counter__plus" type="button" aria-label="Увеличить количество">+</button>
+              </div>
+            </article>
+          </div>
+
+          <aside class="order-summary" aria-label="Итог заказа">
+            <p><span id="itemsCount">9 товаров</span></p>
+            <strong id="total">7 848 р</strong>
+            <button class="primary-button" type="button" id="checkoutButton">Оформить заказ</button>
+            <span class="success-message" id="successMessage">Заказ оформлен</span>
+          </aside>
+        </div>
       </section>
     </main>
   </div>
