@@ -503,32 +503,36 @@ input:focus-visible {
 
 @media (max-width: 1023px) {
   .site-header {
-    height: 58px;
-    min-height: 58px;
-    padding-inline: 14px;
+    height: 136px;
+    min-height: 136px;
+    padding-left: 20px;
+    padding-right: 30px;
   }
 
   .brand {
-    font-size: 22px;
+    font-family: "Gasoek One", Arial, Helvetica, sans-serif;
+    font-size: 40px;
+    font-weight: 400;
   }
 
   .icon-button {
-    width: 36px;
-    height: 36px;
-    padding: 0;
+    width: 60px;
+    height: 60px;
+    padding: 10px;
   }
 
   .icon {
-    width: 23px;
-    height: 23px;
+    width: 40px;
+    height: 40px;
   }
 
   .main {
-    max-width: 760px;
-    padding: 24px 28px 36px;
+    max-width: none;
+    padding: 16px;
   }
 
   .search-panel {
+    width: 100%;
     height: 54px;
     min-height: 54px;
     padding-inline: 26px;
@@ -545,11 +549,13 @@ input:focus-visible {
   }
 
   .rooms-grid {
+    width: 100%;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
   }
 
   .room-card {
+    width: 100%;
     height: auto;
     min-height: 274px;
     border-radius: 22px;
