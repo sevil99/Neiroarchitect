@@ -1,13 +1,20 @@
 const screens = document.querySelectorAll(".screen");
 const navigationControls = document.querySelectorAll("[data-screen]");
+const mainElement = document.querySelector(".main");
 const roomRequest = document.getElementById("roomRequest");
 const productCards = document.querySelectorAll(".product-card");
 const totalElement = document.getElementById("total");
 const itemsCountElement = document.getElementById("itemsCount");
 const checkoutButton = document.getElementById("checkoutButton");
 const successMessage = document.getElementById("successMessage");
+const homeSearchForm = document.querySelector(".search-panel");
+const repairSearchInput = document.getElementById("repairSearch");
 const chatInputForm = document.querySelector(".chat-input");
 const chatPromptInput = document.getElementById("chatPrompt");
+const chatScreen = document.getElementById("chat");
+const cartScreen = document.getElementById("cart");
+
+const cartPushDuration = 780;
 
 const roomMessages = {
   "Ванная": "Я хочу сделать ремонт в ванной",
@@ -34,6 +41,31 @@ function showScreen(screenId, options = {}) {
   if (options.updateHash !== false) {
     history.replaceState(null, "", `#${screenId}`);
   }
+}
+
+function pushCartFromChat() {
+  if (mainElement.classList.contains("main--cart-push")) {
+    return;
+  }
+
+  mainElement.style.minHeight = `${mainElement.offsetHeight}px`;
+  mainElement.classList.add("main--cart-push");
+
+  chatScreen.classList.add("screen--leaving");
+  cartScreen.classList.add("screen--active", "screen--entering");
+  history.replaceState(null, "", "#cart");
+
+  window.setTimeout(() => {
+    chatScreen.classList.remove("screen--active", "screen--leaving");
+    cartScreen.classList.remove("screen--entering");
+    mainElement.classList.remove("main--cart-push");
+    mainElement.style.minHeight = "";
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }, cartPushDuration);
 }
 
 function formatPrice(value) {
@@ -121,6 +153,19 @@ checkoutButton.addEventListener("click", () => {
   successMessage.classList.add("success-message--visible");
 });
 
+homeSearchForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const requestText = repairSearchInput.value.trim();
+
+  if (!requestText) {
+    return;
+  }
+
+  roomRequest.textContent = requestText;
+  showScreen("chat");
+});
+
 chatInputForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
@@ -128,7 +173,7 @@ chatInputForm.addEventListener("submit", (event) => {
     return;
   }
 
-  showScreen("cart");
+  pushCartFromChat();
 });
 
 updateCartSummary();
