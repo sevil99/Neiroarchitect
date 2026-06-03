@@ -1,5 +1,5 @@
 :root {
-  --blue: #064f82;
+  --blue: #04467c;
   --blue-dark: #023e69;
   --ink: #0d2236;
   --muted: #8c98a4;
@@ -50,7 +50,8 @@ img {
   z-index: 10;
   top: 0;
   display: flex;
-  min-height: 64px;
+  height: 190px;
+  min-height: 190px;
   align-items: center;
   justify-content: space-between;
   padding: 0 clamp(10px, 2vw, 24px);
@@ -63,8 +64,9 @@ img {
   border: 0;
   color: #ffffff;
   background: transparent;
-  font-size: clamp(24px, 2.6vw, 34px);
-  font-weight: 900;
+  font-family: "Gasoek One", Arial, Helvetica, sans-serif;
+  font-size: 55px;
+  font-weight: 400;
   letter-spacing: 0;
   line-height: 1;
   text-align: left;
@@ -78,8 +80,8 @@ img {
 
 .icon-button {
   display: grid;
-  width: 42px;
-  height: 42px;
+  width: 86px;
+  height: 86px;
   place-items: center;
   border: 0;
   border-radius: 8px;
@@ -105,8 +107,8 @@ img {
 }
 
 .icon {
-  width: 28px;
-  height: 28px;
+  width: 86px;
+  height: 86px;
   color: #ffffff;
 }
 
@@ -159,6 +161,8 @@ img {
 
 .search-panel {
   gap: clamp(14px, 2vw, 28px);
+  height: 136px;
+  min-height: 136px;
   margin-bottom: clamp(22px, 3vw, 32px);
   padding: 0 clamp(22px, 4vw, 44px);
 }
@@ -194,7 +198,8 @@ img {
 
 .room-card {
   position: relative;
-  min-height: 282px;
+  height: 636px;
+  min-height: 636px;
   overflow: hidden;
   padding: 0;
   border: 0;
@@ -212,9 +217,9 @@ img {
 
 .room-card span {
   position: absolute;
-  right: 12px;
+  right: auto;
   bottom: 18px;
-  left: 12px;
+  left: 50%;
   display: block;
   width: max-content;
   max-width: calc(100% - 24px);
@@ -229,6 +234,7 @@ img {
   line-height: 1.1;
   text-align: center;
   text-overflow: ellipsis;
+  transform: translateX(-50%);
   white-space: nowrap;
 }
 
@@ -490,6 +496,7 @@ input:focus-visible {
 
 @media (max-width: 1023px) {
   .site-header {
+    height: 58px;
     min-height: 58px;
     padding-inline: 14px;
   }
@@ -514,6 +521,7 @@ input:focus-visible {
   }
 
   .search-panel {
+    height: 54px;
     min-height: 54px;
     padding-inline: 26px;
   }
@@ -534,6 +542,7 @@ input:focus-visible {
   }
 
   .room-card {
+    height: auto;
     min-height: 274px;
     border-radius: 22px;
   }
@@ -582,6 +591,7 @@ input:focus-visible {
 
 @media (max-width: 767px) {
   .site-header {
+    height: 54px;
     min-height: 54px;
     padding-inline: 12px;
   }
@@ -610,6 +620,7 @@ input:focus-visible {
   }
 
   .search-panel {
+    height: 52px;
     min-height: 52px;
     gap: 14px;
     padding-inline: 20px;
@@ -621,6 +632,7 @@ input:focus-visible {
   }
 
   .room-card {
+    height: auto;
     min-height: 260px;
   }
 
