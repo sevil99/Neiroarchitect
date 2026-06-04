@@ -145,28 +145,36 @@ img {
   display: block;
 }
 
-.main--cart-push {
+.main--screen-push {
   overflow: hidden;
 }
 
-.main--cart-push .screen--active,
-.main--cart-push .screen--entering {
+.main--screen-push .screen--active,
+.main--screen-push .screen--entering {
   position: absolute;
   inset: 0;
   width: 100%;
 }
 
-.main--cart-push #chat.screen--leaving {
+.main--screen-push .screen--leaving {
+  animation: screen-push-out 780ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.main--screen-push #chat.screen--leaving {
   display: flex;
-  animation: chat-push-out 780ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-.main--cart-push #cart.screen--entering {
+.main--screen-push #chat.screen--entering {
+  display: flex;
+  animation-name: screen-push-in;
+}
+
+.main--screen-push .screen--entering {
   display: block;
-  animation: cart-push-in 780ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: screen-push-in 780ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-@keyframes chat-push-out {
+@keyframes screen-push-out {
   from {
     opacity: 1;
     transform: translateY(0);
@@ -178,7 +186,7 @@ img {
   }
 }
 
-@keyframes cart-push-in {
+@keyframes screen-push-in {
   from {
     opacity: 0.96;
     transform: translateY(100%);
@@ -638,8 +646,8 @@ input:focus-visible {
 
 @media (prefers-reduced-motion: reduce) {
   #chat.screen--active,
-  .main--cart-push #chat.screen--leaving,
-  .main--cart-push #cart.screen--entering {
+  .main--screen-push .screen--leaving,
+  .main--screen-push .screen--entering {
     animation: none;
   }
 }

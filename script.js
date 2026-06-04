@@ -13,8 +13,8 @@ const chatInputForm = document.querySelector(".chat-input");
 const chatPromptInput = document.getElementById("chatPrompt");
 const chatScreen = document.getElementById("chat");
 const cartScreen = document.getElementById("cart");
+const screenPushDuration = 780;
 
-const cartPushDuration = 780;
 
 const roomMessages = {
   "Ванная": "Я хочу сделать ремонт в ванной",
@@ -43,29 +43,29 @@ function showScreen(screenId, options = {}) {
   }
 }
 
-function pushCartFromChat() {
-  if (mainElement.classList.contains("main--cart-push")) {
+function pushScreen(fromScreen, toScreen, hash) {
+  if (mainElement.classList.contains("main--screen-push")) {
     return;
   }
 
   mainElement.style.minHeight = `${mainElement.offsetHeight}px`;
-  mainElement.classList.add("main--cart-push");
+  mainElement.classList.add("main--screen-push");
 
-  chatScreen.classList.add("screen--leaving");
-  cartScreen.classList.add("screen--active", "screen--entering");
-  history.replaceState(null, "", "#cart");
+  fromScreen.classList.add("screen--leaving");
+  toScreen.classList.add("screen--active", "screen--entering");
+  history.replaceState(null, "", hash);
 
   window.setTimeout(() => {
-    chatScreen.classList.remove("screen--active", "screen--leaving");
-    cartScreen.classList.remove("screen--entering");
-    mainElement.classList.remove("main--cart-push");
+    fromScreen.classList.remove("screen--active", "screen--leaving");
+    toScreen.classList.remove("screen--entering");
+    mainElement.classList.remove("main--screen-push");
     mainElement.style.minHeight = "";
 
     window.scrollTo({
       top: 0,
       behavior: "smooth"
     });
-  }, cartPushDuration);
+  }, screenPushDuration);
 }
 
 function formatPrice(value) {
@@ -163,7 +163,7 @@ homeSearchForm.addEventListener("submit", (event) => {
   }
 
   roomRequest.textContent = requestText;
-  showScreen("chat");
+  pushScreen(document.getElementById("home"), chatScreen, "#chat");
 });
 
 chatInputForm.addEventListener("submit", (event) => {
@@ -173,7 +173,7 @@ chatInputForm.addEventListener("submit", (event) => {
     return;
   }
 
-  pushCartFromChat();
+  pushScreen(chatScreen, cartScreen, "#cart");
 });
 
 updateCartSummary();
